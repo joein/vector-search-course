@@ -1,5 +1,6 @@
 # Homework №1: How to search?
 
+## Deadline: 27.11 23:59
 
 ## 0. Rules
 
