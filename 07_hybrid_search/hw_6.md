@@ -67,12 +67,12 @@ Do the same thing as in 2.2.1, rescore with ColBERT instead of fusion.
 
 We've tried rescoring with the embedding-based models, let's try using a dedicated reranking model now. 
 
-Qdrant's `query_points` do not provide an interface to do reranking with cross-encoders.
+Qdrant's `query_points` does not provide an interface to do reranking with cross-encoders.
 So, you'd need to run your query first, and then manually apply cross-encoders to rerank the results.
 `query_points` returns a **sorted** list of **scored** points. 
 
 When dense and sparse models are used together, their scores come from different distributions. 
-As a result, the absolute values are not directly comparable: it is unclear how important a given score is for each model, which makes it unclear how to properly sort the points.
+As a result, the absolute values are not directly comparable: it is unclear how important a given score is for each model, which makes straightforward sorting unreliable.
 
 For this reason, when at least one prefetch is provided, `query_points` requires you to explicitly define how the results from different models should be fused.
 
